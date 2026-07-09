@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nature and Sea | Aisha's Mini Gallery</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">Aisha's Mini Gallery</div>
+    <p class="welcome">Wander through my favorite moments, Enjoy!</p>
+  </header>
+
+  <nav class="selectors">
+    <a class="selector active" href="nature.html">Nature and Sea</a>
+    <a class="selector" href="landscape.html">Landscape</a>
+    <a class="selector" href="randoms.html">Randoms</a>
+  </nav>
+
+  <main>
+    <h2 class="page-title">Nature and Sea</h2>
+
+    <div class="upload-bar">
+      <button id="upload-btn" class="upload-btn" type="button">+ Upload Photos</button>
+      <input id="photo-input" type="file" accept="image/*" multiple hidden />
+      <button id="download-btn" class="download-btn" type="button">Download My Photos</button>
+    </div>
+    <p id="export-status" class="export-status"></p>
+
+    <div class="gallery-grid" id="gallery-grid"></div>
+
+    <p class="back-wrap"><a class="back-link" href="../index.html">&larr; Back to home</a></p>
+  </main>
+
+  <footer>
+    <p id="visit-counter"></p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="../js/visits.js"></script>
+  <script src="../js/gallery-store.js"></script>
+  <script>
+    // To bake permanent, always-visible photos into this page (so they
+    // show up for every visitor, not just after they upload their own),
+    // add entries here once your photos are in /images/nature/:
+    const staticPhotos = [
+      { src: "../images/nature/photo1.jpg", alt: "Dramatic sunset over the ocean with layered clouds" },
+      { src: "../images/nature/photo2.jpg", alt: "Red-sailed felucca boat on the Nile with the city skyline behind" },
+      { src: "../images/nature/photo3.jpg", alt: "Bright sun glare over a rooftop parking area" },
+      { src: "../images/nature/photo4.jpg", alt: "Seagulls flying over the harbor in bright sunlight" },
+      { src: "../images/nature/photo5.jpg", alt: "Nature and Sea photo" },
+      { src: "../images/nature/photo6.jpg", alt: "Nature and Sea photo" },
+      { src: "../images/nature/photo7.jpg", alt: "Nature and Sea photo" },
+      { src: "../images/nature/photo8.jpg", alt: "Nature and Sea photo" },
+      { src: "../images/nature/photo9.jpg", alt: "Nature and Sea photo" },
+      { src: "../images/nature/photo10.jpg", alt: "Rowers on the Nile with the city skyline behind" },
+      { src: "../images/nature/photo11.jpg", alt: "Silhouette of a person at sunset on a rocky jetty" },
+      { src: "../images/nature/photo12.jpg", alt: "City flag silhouetted against a cloudy sunset sky" },
+    ];
+
+    MiniGallery.initUploader(
+      "nature",
+      document.getElementById("gallery-grid"),
+      "No photos yet — click \"Upload Photos\" to add some.",
+      staticPhotos
+    );
+
+    document.getElementById("download-btn").addEventListener("click", () => {
+      MiniGallery.exportZip("nature", document.getElementById("export-status"));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Randoms | Aisha's Mini Gallery</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">Aisha's Mini Gallery</div>
+    <p class="welcome">Wander through my favorite moments, Enjoy!</p>
+  </header>
+
+  <nav class="selectors">
+    <a class="selector" href="nature.html">Nature and Sea</a>
+    <a class="selector" href="landscape.html">Landscape</a>
+    <a class="selector active" href="randoms.html">Randoms</a>
+  </nav>
+
+  <main>
+    <h2 class="page-title">Randoms</h2>
+
+    <div class="upload-bar">
+      <button id="upload-btn" class="upload-btn" type="button">+ Upload Photos</button>
+      <input id="photo-input" type="file" accept="image/*" multiple hidden />
+      <button id="download-btn" class="download-btn" type="button">Download My Photos</button>
+    </div>
+    <p id="export-status" class="export-status"></p>
+
+    <div class="gallery-grid" id="gallery-grid"></div>
+
+    <p class="back-wrap"><a class="back-link" href="../index.html">&larr; Back to home</a></p>
+  </main>
+
+  <footer>
+    <p id="visit-counter"></p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="../js/visits.js"></script>
+  <script src="../js/gallery-store.js"></script>
+  <script>
+    const staticPhotos = [
+      { src: "../images/randoms/photo1.jpg", alt: "Holding up a Palestine scarf outdoors at an event" },
+      { src: "../images/randoms/photo2.jpg", alt: "City sunset seen from a bridge" },
+      { src: "../images/randoms/photo3.jpg", alt: "Glowing light installation with tall illuminated columns" },
+      { src: "../images/randoms/photo4.jpg", alt: "Rows of colorful handmade pottery mugs" },
+      { src: "../images/randoms/photo5.jpg", alt: "Seagulls flying over the harbor in bright sunlight" },
+      { src: "../images/randoms/photo6.jpg", alt: "Modern glass ring sculptures along a walkway" },
+      { src: "../images/randoms/photo7.jpg", alt: "View of a bare tree through an open window" },
+      { src: "../images/randoms/photo8.jpg", alt: "Park pathway with trees and an exhibition sign" },
+    ];
+
+    MiniGallery.initUploader(
+      "randoms",
+      document.getElementById("gallery-grid"),
+      "No photos yet — click \"Upload Photos\" to add some.",
+      staticPhotos
+    );
+
+    document.getElementById("download-btn").addEventListener("click", () => {
+      MiniGallery.exportZip("randoms", document.getElementById("export-status"));
+    });
+  </script>
+</body>
+</html>

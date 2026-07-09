@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Landscape | Aisha's Mini Gallery</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">Aisha's Mini Gallery</div>
+    <p class="welcome">Wander through my favorite moments, Enjoy!</p>
+  </header>
+
+  <nav class="selectors">
+    <a class="selector" href="nature.html">Nature and Sea</a>
+    <a class="selector active" href="landscape.html">Landscape</a>
+    <a class="selector" href="randoms.html">Randoms</a>
+  </nav>
+
+  <main>
+    <h2 class="page-title">Landscape</h2>
+
+    <div class="upload-bar">
+      <button id="upload-btn" class="upload-btn" type="button">+ Upload Photos</button>
+      <input id="photo-input" type="file" accept="image/*" multiple hidden />
+      <button id="download-btn" class="download-btn" type="button">Download My Photos</button>
+    </div>
+    <p id="export-status" class="export-status"></p>
+
+    <div class="gallery-grid" id="gallery-grid"></div>
+
+    <p class="back-wrap"><a class="back-link" href="../index.html">&larr; Back to home</a></p>
+  </main>
+
+  <footer>
+    <p id="visit-counter"></p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="../js/visits.js"></script>
+  <script src="../js/gallery-store.js"></script>
+  <script>
+    const staticPhotos = [
+      { src: "../images/landscape/photo1.jpg", alt: "Palm-lined walkway with a modern skyscraper at sunrise" },
+      { src: "../images/landscape/photo2.jpg", alt: "Mall atrium viewed from an escalator" },
+      { src: "../images/landscape/photo3.jpg", alt: "Curved modern building with reflecting pool" },
+      { src: "../images/landscape/photo4.jpg", alt: "Palm tree by a lagoon with a shaded seating area" },
+      { src: "../images/landscape/photo5.jpg", alt: "Ancient temple gate at sunset with mosque minarets behind" },
+      { src: "../images/landscape/photo6.jpg", alt: "Library atrium with glass staircase and mezzanine bookshelves" },
+      { src: "../images/landscape/photo7.jpg", alt: "Library interior stairway with sunlit reading area" },
+      { src: "../images/landscape/photo8.jpg", alt: "Sunlit pergola walkway lined with palm trees" },
+      { src: "../images/landscape/photo9.jpg", alt: "Rooftop terrace with benches beside glass towers at dusk" },
+      { src: "../images/landscape/photo10.jpg", alt: "Dim hotel corridor with tiled floor" },
+      { src: "../images/landscape/photo11.jpg", alt: "Grand mosque with twin minarets under a blue sky" },
+      { src: "../images/landscape/photo12.jpg", alt: "Museum hallway with geometric perforated ceiling light patterns" },
+      { src: "../images/landscape/photo13.jpg", alt: "Window view of the sea with an art quote etched on glass" },
+      { src: "../images/landscape/photo14.jpg", alt: "Curved building silhouette at sunset with palm trees" },
+      { src: "../images/landscape/photo15.jpg", alt: "Lamp post on a riverside promenade with sailboats at sunset" },
+      { src: "../images/landscape/photo16.jpg", alt: "Grand domed mosque with a flag flying in the foreground" },
+      { src: "../images/landscape/photo17.jpg", alt: "Museum walkway under a dome with dappled light patterns" },
+      { src: "../images/landscape/photo18.jpg", alt: "Wide highway at dusk beside a curved stadium building" },
+    ];
+
+    MiniGallery.initUploader(
+      "landscape",
+      document.getElementById("gallery-grid"),
+      "No photos yet — click \"Upload Photos\" to add some.",
+      staticPhotos
+    );
+
+    document.getElementById("download-btn").addEventListener("click", () => {
+      MiniGallery.exportZip("landscape", document.getElementById("export-status"));
+    });
+  </script>
+</body>
+</html>
